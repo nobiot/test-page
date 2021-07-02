@@ -6,3 +6,4 @@ main figure figcaption { max-width:400px }
 main p { line-height:150% }
 main code { font-size:14px;color:inherit }
 main pre { margin-bottom:30px;background-color:black;color:white;padding:15px }
+main pre>code>i { color:gray }
