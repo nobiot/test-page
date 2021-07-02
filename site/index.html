@@ -29,9 +29,16 @@ $ su - root # password root
       </code></pre>
 
       <pre><code>
-# install terminus (forgot how)
-# setfont
-$ nano /etc/vconsole.conf <i># add "KEYMAP=ter-132b"</i>
+$ pacman -Syu
+<i># Synchronize the repository databases & updates the system's packages</i>
+
+<i># install terminus (forgot how)</i>
+<i># check /usr/share/kbd/consolefonts/</i>
+$ setfont ter-132b
+<i>This is temporary; do also the following</i>
+
+$ nano /etc/vconsole.conf
+KEYMAP=ter-132b
       </code></pre>
 
       <pre><code>
