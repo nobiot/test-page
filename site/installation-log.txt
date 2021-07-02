@@ -1,0 +1,65 @@
+# [2021-07-01 Thu] LXDE & Openbox
+
+No need to install LXDE. I wanted to have a blueman-applet in a tray, in the hope that I can set up bluetooth keyboard with only a mouse -- when I set my Keychron K2 keyboard turn to the bluetooth mode for pairing, it cannot connect with USB any longer; it's an either-or switch.
+
+```
+$ sudo pacman -S lxde
+```
+
+Edit <pre>.xinitrc</pre>
+
+```
+# ~/.xinitrc
+exec startlxde
+```
+
+
+# [2021-06-30 Wed]
+
+Set up bluetooh. Abandoned. When I set my Keychron K2 keyboard turn to the bluetooth mode for pairing, it cannot connect with USB any longer; it's an either-or switch.
+
+```
+$ sudo pacman bluez bluez-utils
+$ sudo systemctl enable bluetooth.service # automatically start at logon
+$ sudo systemctl start bluetooth.service
+```
+
+It's a little difficult to pair and connect to a keyboard without using a keyboard. Tried to set up a graphical user interface (e.g. blueman, gnome-bluetooh, etc.) but I struggled. It seems much easier to use another wired keyword. I managed to connect to Keychron K2 with bluetooth on Manjaoro, so it can be done.
+
+# [2021-06-29 Tue]
+
+
+Log in and do initial setup as root
+
+    login as alarm (alarm)
+
+    su - root # password root 
+    
+
+timezone
+locale.gen
+setfont
+
+    useradd -m nobiot
+    passwd nobiot # enter password
+
+
+Install sudo
+
+    pacman -S sudo
+    nano /etc/sudoers # add new user 
+    passwd root # enter new password
+    reboot
+
+Log in as nobiot
+
+   sudo pacman -Syu
+   sudo pacman -S i3 xorg-server xorg-apps # Take the default option for both
+   sudo pacman -S micro feh git emacs man
+
+Now [[i3]] works with a minimum modification to the default template that it generates at the first launch.
+
+Modify .bash_profile to start i3 automatically by adding:
+
+    startx
+
