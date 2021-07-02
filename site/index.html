@@ -16,19 +16,79 @@
       <h1>Raspberry Pi</h1>
     </header>
     <main>
-      <p>This is a paragraph.</p>
+      <p><a href="rpi4.txt">Installation instruction</p>
       <figure>
         <img src="media/nespi4.jpg">
         <figcaption>Raspberry Pi 4 in a <a href="https://retroflag.com/nespi-4-case.html">NESPi 4 Case</a> by Retroflag Tech</figcaption>
       </figure>
-      <p>This is another paragraph.</p>
-      <figure>
-        <img src="media/desktop.png">
-        <figcaption>Arch Linux on Raspberry Pi 4; i3, Emacs, and Xterm</figcaption>
-      </figure>
-    </main>
-    <footer>
-      <p>&copy; 2021 nobiot</p>
-    </footer>
-  </body>
+
+      <p>Login as alarm (alarm) and do initial set up. Most of the instructions are available on <a href="https://wiki.archlinux.org/title/Installation_guide#Configure_the_system">ArchWiki</a>.</p>
+
+      <code>
+        # su - root # password root
+      </code>
+
+      <code>
+        # install terminus (forgot how)
+        # setfont
+        # nano /etc/vconsole.conf <comment># add "KEYMAP=ter-132b"</comment>
+      </code>
+
+      <code>
+        # ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+        <comment># hwclock --systohc didn't work on me</comment>
+        <comment># Does not seem to have a problem</comment>
+      </code>
+
+      <code>
+        # nano /etc/locale.gen <comment># uncomment en_US.UTF-8</comment>
+        # locale-gen
+        # nano /etc/locale.conf <comment># add one-liner "LANG=en_US.UTF-8"
+      </code>
+
+      <code>
+        # nano /etc/hostname
+        rpi4
+
+        # nano /etc/hostname
+        127.0.0.1 localhost
+        ::1       localhost
+        127.0.1.1 myhostname.localdomain myhostname
+      </code>
+
+      useradd -m nobiot
+      passwd nobiot # enter password
+
+
+      <p>Install sudo</p>
+
+      <code>
+        pacman -S sudo
+        nano /etc/sudoers # add new user
+        passwd root # enter new password
+        reboot
+      </code>
+
+      <p>Log in as nobiot</p>
+
+      <code>
+        sudo pacman -Syu
+        sudo pacman -S i3 xorg-server xorg-apps # Take the default option for both
+        sudo pacman -S micro feh git emacs man
+      </code>
+
+      <p>Now [[i3]] works with a minimum modification to the default template that it generates at the first launch. Modify .bash_profile to start i3 automatically by adding:</>
+
+<code>
+  startx
+</code>
+<figure>
+  <img src="media/desktop.png">
+  <figcaption>Arch Linux on Raspberry Pi 4; i3, Emacs, and Xterm</figcaption>
+</figure>
+</main>
+<footer>
+  <p>&copy; 2021 nobiot</p>
+</footer>
+</body>
 </html>
