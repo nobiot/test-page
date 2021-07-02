@@ -23,30 +23,32 @@
       </figure>
 
       <p>Login as alarm (alarm) and do initial set up. Most of the instructions are available on <a href="https://wiki.archlinux.org/title/Installation_guide#Configure_the_system">ArchWiki</a>.</p>
-
+      
+      <pre>
       <code>
         # su - root # password root
       </code>
+      </pre>
 
-      <code>
+      <pre><code>
         # install terminus (forgot how)
         # setfont
-        # nano /etc/vconsole.conf <comment># add "KEYMAP=ter-132b"</comment>
-      </code>
+        # nano /etc/vconsole.conf <i># add "KEYMAP=ter-132b"</i>
+      </code></pre>
 
-      <code>
+      <pre><code>
         # ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
-        <comment># hwclock --systohc didn't work on me</comment>
-        <comment># Does not seem to have a problem</comment>
-      </code>
+        <i># hwclock --systohc didn't work on me</i>
+        <i># Does not seem to have a problem</i>
+      </code></pre>
 
-      <code>
-        # nano /etc/locale.gen <comment># uncomment en_US.UTF-8</comment>
+      <pre><code>
+        # nano /etc/locale.gen <i># uncomment en_US.UTF-8</i>
         # locale-gen
-        # nano /etc/locale.conf <comment># add one-liner "LANG=en_US.UTF-8"
-      </code>
+        # nano /etc/locale.conf <i># add one-liner "LANG=en_US.UTF-8"</i>
+      </code></pre>
 
-      <code>
+      <pre><code>
         # nano /etc/hostname
         rpi4
 
@@ -54,28 +56,30 @@
         127.0.0.1 localhost
         ::1       localhost
         127.0.1.1 myhostname.localdomain myhostname
-      </code>
+      </code></pre>
 
-      useradd -m nobiot
-      passwd nobiot # enter password
-
+      <pre><code>
+        # useradd -m nobiot
+        # passwd nobiot # enter password
+      </code></pre>
 
       <p>Install sudo</p>
 
+      <pre>
       <code>
         pacman -S sudo
         nano /etc/sudoers # add new user
         passwd root # enter new password
         reboot
-      </code>
+      </code></pre>
 
       <p>Log in as nobiot</p>
 
-      <code>
+      <pre><code>
         sudo pacman -Syu
         sudo pacman -S i3 xorg-server xorg-apps # Take the default option for both
         sudo pacman -S micro feh git emacs man
-      </code>
+      </code></pre>
 
       <p>Now [[i3]] works with a minimum modification to the default template that it generates at the first launch. Modify .bash_profile to start i3 automatically by adding:</>
 
