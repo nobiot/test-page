@@ -26,41 +26,40 @@
       
       <pre>
       <code>
-        # su - root # password root
+  # su - root # password root
       </code>
       </pre>
 
       <pre><code>
-        # install terminus (forgot how)
-        # setfont
-        # nano /etc/vconsole.conf <i># add "KEYMAP=ter-132b"</i>
+# install terminus (forgot how)
+# setfont
+# nano /etc/vconsole.conf <i># add "KEYMAP=ter-132b"</i>
       </code></pre>
 
       <pre><code>
-        # ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
-        <i># hwclock --systohc didn't work on me</i>
-        <i># Does not seem to have a problem</i>
+# ln -sf /usr/share/zoneinfo/Region/City /etc/localtime <i># hwclock --systohc didn't work on me</i>
+<i># Does not seem to have a problem</i>
       </code></pre>
 
       <pre><code>
-        # nano /etc/locale.gen <i># uncomment en_US.UTF-8</i>
-        # locale-gen
-        # nano /etc/locale.conf <i># add one-liner "LANG=en_US.UTF-8"</i>
+# nano /etc/locale.gen <i># uncomment en_US.UTF-8</i>
+# locale-gen
+# nano /etc/locale.conf <i># add one-liner "LANG=en_US.UTF-8"</i>
       </code></pre>
 
       <pre><code>
-        # nano /etc/hostname
-        rpi4
+# nano /etc/hostname
+rpi4
 
-        # nano /etc/hostname
-        127.0.0.1 localhost
-        ::1       localhost
-        127.0.1.1 myhostname.localdomain myhostname
+# nano /etc/hostname
+127.0.0.1 localhost
+::1       localhost
+127.0.1.1 myhostname.localdomain myhostname
       </code></pre>
 
       <pre><code>
-        # useradd -m nobiot
-        # passwd nobiot # enter password
+# useradd -m nobiot
+# passwd nobiot # enter password
       </code></pre>
 
       <p>Install sudo</p>
