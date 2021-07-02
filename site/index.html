@@ -59,26 +59,27 @@ $ nano /etc/hostname
 
       <pre><code>
 $ useradd -m nobiot
-$ passwd nobiot 
-<i># enter password</i>
+$ passwd nobiot <i># enter password</i>
       </code></pre>
 
       <p>Install sudo</p>
 
       <pre>
       <code>
-        pacman -S sudo
-        nano /etc/sudoers # add new user
-        passwd root # enter new password
-        reboot
+$ pacman -S sudo
+$ nano /etc/sudoers <i># add new user</i>
+$ passwd root <i># enter new password</i>
+$ reboot
       </code></pre>
 
       <p>Log in as nobiot</p>
 
       <pre><code>
-        sudo pacman -Syu
-        sudo pacman -S i3 xorg-server xorg-apps # Take the default option for both
-        sudo pacman -S micro feh git emacs man
+$ sudo pacman -Syu
+$ sudo pacman -S i3 xorg-server xorg-apps 
+<i># Take the default option for all packages</i>
+ 
+$ sudo pacman -S micro feh git emacs man
       </code></pre>
 
       <p>Now [[i3]] works with a minimum modification to the default template that it generates at the first launch. Modify .bash_profile to start i3 automatically by adding:</>
