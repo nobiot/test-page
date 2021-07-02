@@ -16,29 +16,48 @@
       <h1>Raspberry Pi</h1>
     </header>
     <main>
-      <p><a href="rpi4.txt">Installation instruction</p>
       <figure>
         <img src="media/nespi4.jpg">
         <figcaption>Raspberry Pi 4 in a <a href="https://retroflag.com/nespi-4-case.html">NESPi 4 Case</a> by Retroflag Tech</figcaption>
       </figure>
 
+      <h2>Boot Raspberry Pi into Arch Linux from SDD</h2>
+      <p>Booting Raspberry Pi from SD card is needed as a bootstrapping procss. Use whatever distro; e.g. Manjaro. Follow<a href="rpi4.txt">this installation instruction</a>.</p>
+
+      <pre><code>
+$ lsblk
+<i># Identify the SSD</i>
+<i># e.g. sda
+      </code></pre>
+
+      <p>Don't forget:</p>
+      <li>Change the boot column in<code>/etc/fstab</code>to <code>/dev/sda1</code></li>
+      <li>Change <code>root=/dev/sda2</code></li>
+      <li><code>usb-storage.quirks</code></li>
+
       <p>Login as alarm (alarm) and do initial set up. Most of the instructions are available on <a href="https://wiki.archlinux.org/title/Installation_guide#Configure_the_system">ArchWiki</a>.</p>
-      
+
       <pre><code>
 $ su - root # password root
       </code></pre>
 
       <pre><code>
+$ pacman-key --init
+$ pacman-key --populate archlinuxarm
+      </code><pre>
+
+<p>Characters on the terminal displayed on 4K monitor are too small. There is an easy fix—set a larger font.</p>
+
+      <pre><code>
 $ pacman -Syu
 <i># Synchronize the repository databases & updates the system's packages</i>
 
-<i># install terminus (forgot how)</i>
-<i># check /usr/share/kbd/consolefonts/</i>
+$ pacman -S terminus-font
 $ setfont ter-132b
 <i>This is temporary; do also the following</i>
 
 $ nano /etc/vconsole.conf
-KEYMAP=ter-132b
+FONT=ter-132b
       </code></pre>
 
       <pre><code>
@@ -58,7 +77,7 @@ $ nano /etc/locale.conf
 $ nano /etc/hostname
 rpi4
 
-$ nano /etc/hostname
+$ nano /etc/hosts
 127.0.0.1 localhost
 ::1       localhost
 127.0.1.1 myhostname.localdomain myhostname
@@ -79,24 +98,22 @@ $ passwd root <i># enter new password</i>
 $ reboot
       </code></pre>
 
+      <h2>Set up Arch Linux with EXWM</h2>
+
       <p>Log in as nobiot</p>
 
       <pre><code>
 $ sudo pacman -Syu
-$ sudo pacman -S i3 xorg-server xorg-apps 
+$ sudo pacman -S emacs xorg-server xorg-apps xorg-xinit
+<i># xorg-apps may not be necessary</i>
 <i># Take the default option for all packages</i>
- 
-$ sudo pacman -S micro feh git emacs man
+
+$ sudo pacman -S git man neofetch scrot
       </code></pre>
 
-      <p>Now [[i3]] works with a minimum modification to the default template that it generates at the first launch. Modify .bash_profile to start i3 automatically by adding:</>
-
-<code>
-  startx
-</code>
 <figure>
-  <img src="media/desktop.png">
-  <figcaption>Arch Linux on Raspberry Pi 4; i3, Emacs, and Xterm</figcaption>
+  <img src="media/desktop.jpg">
+  <figcaption>Arch Linux on Raspberry Pi 4; Emacs as window manager with EXWM</figcaption>
 </figure>
 </main>
 <footer>
